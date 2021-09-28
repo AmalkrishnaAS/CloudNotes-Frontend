@@ -9,14 +9,23 @@ import {
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
 import About from './Components/About';
+import NoteState from './Context/notes/NoteState';
+import Alert from './Components/Alert';
+import { useState } from 'react';
 
 
 function App() {
+  const [alert, setalert] = useState({
+    msg:"message",
+    type:"primary"
+  })
   return (
+    <NoteState>
     <div className="App">
       <Router>
       <Navbar />
-     
+      <Alert  alert={alert}/>
+     <div>
       <Switch>
          
           <Route exact path="/">
@@ -26,8 +35,10 @@ function App() {
             <About />
           </Route>
         </Switch>
+        </div>
         </Router>
     </div>
+    </NoteState>
   );
 }
 

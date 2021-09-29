@@ -1,7 +1,15 @@
 import React from 'react'
+import { useContext } from 'react'
+import noteContext from "../Context/notes/noteContext";
 
 const NoteItem = (props) => {
-    const {note}=props
+  const context = useContext(noteContext);
+  const  {deletenote}  = context;
+  const {note}=props
+  const handleclick=()=>{
+    deletenote(note._id)
+  }
+   
     return (
          
         <div className="col-md-3 my-3">
@@ -12,7 +20,7 @@ const NoteItem = (props) => {
     <p className="card-text">{note.description}.</p>
     {/* <a href="#" className="card-link">Card link</a>
     <a href="#" className="card-link">Another link</a> */}
-    <i className="fas fa-trash-alt mx-2"></i>
+    <i className="fas fa-trash-alt mx-2" onClick={handleclick}></i>
     <i className="fas fa-edit mx-2"></i>
   </div>
   

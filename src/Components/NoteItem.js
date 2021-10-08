@@ -21,7 +21,7 @@ const NoteItem = (props) => {
     {/* <a href="#" className="card-link">Card link</a>
     <a href="#" className="card-link">Another link</a> */}
     <i className="fas fa-trash-alt mx-2" onClick={handleclick}></i>
-    <i className="fas fa-edit mx-2"></i>
+    <i className="fas fa-edit mx-2" onClick={()=>{props.updatenote(note)}}></i>
   </div>
   
 </div>

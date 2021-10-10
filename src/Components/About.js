@@ -7,8 +7,10 @@ const About = () => {
    
     return (
         
-        <div>
-            <h1>this is about amal and he is in classamal</h1>
+        <div className='container my-5'>
+          <h4>
+              A Simple User friendly Web App Built with the MERN Stack To allow Users To Store and manage their Notes and reminders
+          </h4>
         </div>
     )
 }

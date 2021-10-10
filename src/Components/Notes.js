@@ -6,8 +6,10 @@ import NoteItem from './NoteItem'
 import { useEffect } from 'react'
 import { useRef } from 'react'
 import { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 function Notes(props) {
+  let history=useHistory()
   const [note, setNote] = useState({
     id:"",
     etitle: "",
@@ -28,7 +30,13 @@ function Notes(props) {
     const context=  useContext(noteContext)
 const {notes,setnotes,addnote,getnotes,editnote}=context
 useEffect(() => {
-  getnotes()
+  if(localStorage.getItem('token'))
+  {
+  getnotes()}
+  else{
+    history.push('/login')
+
+  }
 }, [])
 const updatenote=(currentnote)=>{
   ref.current.click()
@@ -98,12 +106,15 @@ const refclose = useRef(null)
       </div>
       <div className="modal-footer">
         <button ref={refclose} type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button onClick={handleclick} type="button" className="btn btn-primary">Update Note</button>
+        <button onClick={handleclick} disabled={note.etitle.length<5|| note.edescription.length<5?true:false} type="button" className="btn btn-primary">Update Note</button>
       </div>
     </div>
   </div>
 </div>
             <h1 className='my-3'>Your notes</h1>
+            <div className="container">
+            {notes.length===0&&'No notes to display'}
+            </div>
             <div className="row">
             {notes.map(
               (note)=>

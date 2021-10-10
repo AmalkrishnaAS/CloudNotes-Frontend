@@ -12,13 +12,24 @@ import About from './Components/About';
 import NoteState from './Context/notes/NoteState';
 import Alert from './Components/Alert';
 import { useState } from 'react';
+import Signup from './Components/Signup';
+import Login from './Components/Login';
 
 
 function App() {
-  const [alert, setalert] = useState({
-    msg:"message",
-    type:"primary"
-  })
+  const [alert, setalert] = useState(null
+)
+  const showalert=(message,type)=>{
+
+    setalert({
+      msg:message,
+      type:type
+    })
+    setTimeout(() => {
+        
+      setalert(null)
+    }, 2500);
+  }
   return (
     <NoteState>
     <div className="App">
@@ -29,10 +40,16 @@ function App() {
       <Switch>
          
           <Route exact path="/">
-            <Home />
+            <Home showalert={showalert} />
           </Route>
           <Route exact path="/about">
             <About />
+          </Route>
+          <Route exact path="/login">
+            <Login  showalert={showalert} />
+          </Route>
+          <Route exact path="/signup" showalert={showalert}>
+            <Signup />
           </Route>
         </Switch>
         </div>

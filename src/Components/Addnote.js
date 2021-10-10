@@ -13,11 +13,12 @@ const Addnote = (props) => {
   const [note, setNote] = useState({
     title: "",
     description: "",
-    tag: "default",
+    tag: "",
   });
   const handleclick = (event) => {
-    event.preventDefault()
     addnote(note.title, note.description, note.tag);
+   
+    event.preventDefault()
   };
   return (
     <div className=" mb-3">
@@ -34,7 +35,7 @@ const Addnote = (props) => {
             aria-describedby="emailHelp"
             name="title"
             onChange={onChange}
-          />
+         value={note.title} />
         </div>
         <div className="mb-3">
           <label htmlFor="desc" className="form-label">
@@ -46,7 +47,7 @@ const Addnote = (props) => {
             id="description"
             name="description"
             onChange={onChange}
-          />
+            value={note.description} />
         </div>
         <div className="mb-3">
           <label htmlFor="tag" className="form-label">
@@ -58,11 +59,11 @@ const Addnote = (props) => {
             id="tag"
             name="tag"
             onChange={onChange}
-          />
+          value={note.tag} />
         </div>
 
        
-        <button type="submit" className="btn btn-primary" onClick={handleclick}>
+        <button   disabled={note.title.length<5|| note.description.length<5?true:false} type="submit" className="btn btn-primary" onClick={handleclick}>
           Add a Note
         </button>
       </form>

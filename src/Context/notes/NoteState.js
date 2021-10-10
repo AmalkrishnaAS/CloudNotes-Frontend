@@ -2,7 +2,7 @@ import react from "react";
 import NoteContext from "./noteContext";
 import { useState } from "react";
 const axios=require('axios')
-let host='http://localhost:5000'
+let host='https://cloudnotes-backend.herokuapp.com'
 const NoteState=(props)=>{
     const notesinitial=[
         

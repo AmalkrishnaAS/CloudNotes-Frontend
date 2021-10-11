@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useHistory } from 'react-router'
 
 const Signup = (props) => {
+  const {showalert}=props
     let history=useHistory()
     const [credentials, setcredentials] = useState({name:"",email:"",password:"",cpassword:""})
     const {name,email,password}=credentials
@@ -30,7 +31,7 @@ const Signup = (props) => {
          
             localStorage.setItem('token',json.authtoken)
             history.push("/")
-            props.showalert('Account  Created Successfully','success')
+            showalert('Account  Created Successfully','success')
          
           
     

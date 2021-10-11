@@ -28,7 +28,8 @@ function Notes(props) {
     // addnote(note.etitle, note.edescription, note.etag);
   };
     const context=  useContext(noteContext)
-const {notes,setnotes,addnote,getnotes,editnote}=context
+ const {notes,setnotes,addnote,getnotes,editnote}=context
+console.log(notes);
 useEffect(() => {
   if(localStorage.getItem('token'))
   {

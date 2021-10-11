@@ -4,10 +4,8 @@ import { useState } from "react";
 const axios=require('axios')
 let host='https://cloudnotes-backend.herokuapp.com'
 const NoteState=(props)=>{
-    const notesinitial=[
-        
-      ]
-      const [notes, setnotes] = useState(notesinitial)
+    
+      const [notes, setnotes] = useState([])
       
       //delete
       const deletenote=async (id)=>{
@@ -71,7 +69,7 @@ const NoteState=(props)=>{
     
         const json=await response.json()
        console.log(json)
-       setnotes(json)
+       setnotes([json])
       }
       //edit
       const editnote=async (title,description,id,tag)=>{

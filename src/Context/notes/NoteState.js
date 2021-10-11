@@ -69,7 +69,7 @@ const NoteState=(props)=>{
     
         const json=await response.json()
        console.log(json)
-       setnotes([json])
+       setnotes(json)
       }
       //edit
       const editnote=async (title,description,id,tag)=>{

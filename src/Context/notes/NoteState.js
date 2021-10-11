@@ -51,15 +51,7 @@ const NoteState=(props)=>{
     
         
         console.log('adding a note....')
-          let note={
-            "_id": "613cf8f90efxxxd4127f3d4600b",
-            "user": "613c5894fbf3c864aeb3a9f1",
-            "title": title,
-            "description": description,
-            "tag": tag,
-            "date": "2021-09-11T18:44:09.874Z",
-            "__v": 0
-          };
+          let note=await response.json()
           setnotes(notes.concat(note))
       }
       const getnotes=async()=>{

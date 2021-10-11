@@ -4,21 +4,24 @@ import { useContext } from "react";
 import noteContext from "../Context/notes/noteContext";
 
 const Addnote = (props) => {
-  const onChange = (event) => {
-    setNote({ ...note, [event.target.name]: event.target.value });
-    
-  };
-  const context = useContext(noteContext);
-  const { addnote } = context;
   const [note, setNote] = useState({
     title: "",
     description: "",
     tag: "",
   });
+  const context = useContext(noteContext);
+  const { addnote } = context;
+ 
+  const onChange = (event) => {
+    setNote({ ...note, [event.target.name]: event.target.value });
+    
+  };
+
   const handleclick = (event) => {
     addnote(note.title, note.description, note.tag);
    
     event.preventDefault()
+    setNote({title: "", description: "", tag: ""})
   };
   return (
     <div className=" mb-3">

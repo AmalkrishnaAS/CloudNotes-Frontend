@@ -10,6 +10,7 @@ const Signup = (props) => {
     const onChange = (event) => {
         setcredentials({ ...credentials, [event.target.name]: event.target.value });
         
+        
       };
     const handlesubmit=async (event)=>{
       
@@ -28,10 +29,15 @@ const Signup = (props) => {
           });
           const json=await response.json()
           console.log(json);
-         
+            if(credentials.cpassword===credentials.password)
+            {
             localStorage.setItem('token',json.authtoken)
             history.push("/")
             showalert('Account  Created Successfully','success')
+            }
+            else{
+              showalert('Passwords doesnt match','danger')
+            }
          
           
     

@@ -33,7 +33,9 @@ console.log(notes);
 useEffect(() => {
   if(localStorage.getItem('token'))
   {
-  getnotes()}
+    getnotes()
+    // eslint-disable-next-line
+console.log(notes);}
   else{
     history.push('/login')
 
@@ -117,6 +119,7 @@ const refclose = useRef(null)
             {notes.length===0&&'No notes to display'}
             </div>
             <div className="row">
+              {console.log(notes)}
             {notes.map(
               (note)=>
               {
